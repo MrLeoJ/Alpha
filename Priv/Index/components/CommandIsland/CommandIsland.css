@@ -1,0 +1,142 @@
+
+.island-shadow {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.island-input::placeholder {
+    color: #9ca3af;
+    opacity: 1;
+}
+
+.island-container {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Enhanced Filter Modal Styles --- */
+
+.filter-modal-backdrop {
+    background: rgba(0, 0, 0, 0.4); /* Darker overlay for focus */
+    backdrop-filter: blur(12px);     /* Premium glass blur */
+    -webkit-backdrop-filter: blur(12px);
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.filter-modal-content {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.25),
+        0 0 0 1px rgba(255, 255, 255, 1) inset; /* Subtle inner border/glow */
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.filter-modal-open .filter-modal-content {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+.filter-modal-closed .filter-modal-content {
+    transform: scale(0.95) translateY(12px); /* Slight slide up effect */
+    opacity: 0;
+}
+
+/* Enhanced Search Input in Modal */
+.modal-search-input {
+    background: #f3f4f6;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.modal-search-input:focus {
+    background: #ffffff;
+    border-color: #00d2c3; /* Primary */
+    box-shadow: 0 0 0 4px rgba(0, 210, 195, 0.1);
+}
+
+.modal-search-input::placeholder {
+    color: #9ca3af;
+}
+
+/* Enhanced Filter Chips */
+.filter-chip {
+    padding: 10px 16px;
+    border-radius: 14px; /* Soft pill shape */
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e5e7eb;
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #4b5563;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    user-select: none;
+}
+
+.filter-chip:hover {
+    border-color: #d1d5db;
+    background-color: #f9fafb;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    color: #111827;
+}
+
+.filter-chip:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.filter-chip.active {
+    background-color: #00d2c3;
+    border-color: #00d2c3;
+    color: white;
+    box-shadow: 0 8px 16px -4px rgba(0, 210, 195, 0.4);
+    font-weight: 600;
+    transform: translateY(-1px);
+}
+
+/* Badge styling inside chip */
+.filter-chip .chip-badge {
+    background-color: #f3f4f6;
+    color: #6b7280;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 6px;
+    transition: all 0.2s;
+    font-weight: 700;
+}
+
+.filter-chip:hover .chip-badge {
+    background-color: #e5e7eb;
+    color: #374151;
+}
+
+.filter-chip.active .chip-badge {
+    background-color: rgba(255, 255, 255, 0.25);
+    color: white;
+}
+
+/* Section Headers */
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.section-header::after {
+    content: '';
+    height: 1px;
+    flex: 1;
+    background: #f3f4f6;
+}
+
+.section-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #9ca3af;
+    font-weight: 700;
+}

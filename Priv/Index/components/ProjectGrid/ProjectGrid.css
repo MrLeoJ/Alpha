@@ -1,0 +1,107 @@
+
+
+/* Category Card Styles */
+.category-card {
+    display: block;
+    width: 100%;
+}
+
+.category-header {
+    touch-action: none; /* For better drag handling on touch */
+}
+
+/* Accordion Transition */
+.category-body {
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.category-card.collapsed .category-body {
+    /* Styles handled via JS helper for height, mostly logic based */
+}
+
+/* Category Column */
+.category-column {
+    min-height: 150px; /* Allow dropping into empty columns */
+    height: 100%;
+}
+
+/* Project Card Item Styles */
+.project-card-item {
+    transform: translate3d(0, 0, 0); /* Force hardware acceleration */
+    backface-visibility: hidden;
+    cursor: pointer; /* Clickable */
+    transition: all 0.2s ease;
+}
+
+/* Selected State for Bulk Edit */
+.project-card-item.selected {
+    border-color: #00d2c3; /* Primary */
+    background-color: #f0fdfc;
+    box-shadow: 0 0 0 2px rgba(0, 210, 195, 0.2);
+}
+
+.project-card-item.selected::after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 24px;
+    height: 24px;
+    background-color: #00d2c3;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+    background-size: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    z-index: 30;
+    animation: popIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+
+/* DND Styles - Category Level */
+.sortable-ghost-category {
+    opacity: 0.4;
+    background: #e5e7eb;
+    border: 2px dashed #cbd5e1;
+    border-radius: 1rem;
+}
+
+.sortable-drag-category {
+    opacity: 0.9;
+    transform: rotate(2deg) scale(1.02);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    z-index: 9999;
+}
+
+/* DND Styles - Project Level */
+.sortable-ghost-project {
+    opacity: 0.4;
+    background: #f3f4f6;
+    border: 1px dashed #d1d5db;
+    box-shadow: none;
+}
+
+.sortable-drag-project {
+    opacity: 1 !important;
+    background: #ffffff;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transform: scale(1.02);
+    z-index: 9999;
+    border-color: #00d2c3;
+}
+
+/* Override Action Toolbar positioning for the new smaller cards */
+.project-card-item .action-toolbar {
+    top: 0.5rem;
+    right: 0.5rem;
+    transform: scale(0.9) translateY(-5px);
+}
+
+.project-card-item:hover .action-toolbar {
+    transform: scale(0.9) translateY(0);
+}

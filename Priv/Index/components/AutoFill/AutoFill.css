@@ -1,0 +1,72 @@
+
+/* AutoFill Container - ensures relative positioning for the dropdown */
+.autofill-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* Dropdown Menu */
+.autofill-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    margin-top: 4px;
+    z-index: 100; /* Higher than modal */
+    max-height: 200px;
+    overflow-y: auto;
+    display: none; /* Hidden by default */
+    padding: 4px;
+    animation: af-fade-in 0.2s ease-out;
+}
+
+.autofill-dropdown.active {
+    display: block;
+}
+
+/* Dropdown Item */
+.autofill-item {
+    padding: 8px 12px;
+    font-size: 0.875rem; /* text-sm */
+    color: #374151; /* gray-700 */
+    cursor: pointer;
+    border-radius: 0.5rem;
+    transition: background-color 0.1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.autofill-item:hover {
+    background-color: #f3f4f6; /* gray-100 */
+}
+
+.autofill-item.selected {
+    background-color: #f0fdfc; /* primary light */
+    color: #00d2c3; /* primary */
+    font-weight: 600;
+}
+
+/* Match Highlight */
+.autofill-match {
+    font-weight: 700;
+    color: #111827;
+}
+
+@keyframes af-fade-in {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Scrollbar refinement for the dropdown */
+.autofill-dropdown::-webkit-scrollbar {
+    width: 6px;
+}
+.autofill-dropdown::-webkit-scrollbar-thumb {
+    background: #e5e7eb;
+    border-radius: 3px;
+}

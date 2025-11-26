@@ -1,0 +1,80 @@
+
+/* Taxonomy Manager Styles */
+
+.tm-backdrop {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: opacity 0.3s ease;
+}
+
+.tm-content {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.tm-open .tm-backdrop {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.tm-open .tm-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.tm-closed .tm-backdrop {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.tm-closed .tm-content {
+    transform: scale(0.95);
+    opacity: 0;
+}
+
+/* Tabs */
+.tm-tab-btn {
+    border-bottom: 2px solid transparent;
+    color: #6b7280; /* gray-500 */
+    transition: all 0.2s ease;
+}
+
+.tm-tab-btn:hover {
+    color: #374151; /* gray-700 */
+}
+
+.tm-tab-btn.active {
+    border-bottom-color: #00d2c3;
+    color: #00d2c3;
+}
+
+/* List Items */
+.tm-item-row {
+    transition: background-color 0.2s ease;
+}
+
+.tm-item-row:hover {
+    background-color: #f9fafb; /* gray-50 */
+}
+
+.tm-item-actions {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.tm-item-row:hover .tm-item-actions {
+    opacity: 1;
+}
+
+/* In mobile, always show actions or use a menu, but for simplicity we rely on tap/hover */
+@media (max-width: 640px) {
+    .tm-item-actions {
+        opacity: 1;
+    }
+}
+
+/* Custom Scroll within modal */
+.tm-list-container {
+    max-height: 400px;
+    overflow-y: auto;
+}

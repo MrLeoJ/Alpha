@@ -1,0 +1,31 @@
+
+.bem-backdrop {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transition: opacity 0.3s ease;
+}
+
+.bem-content {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.bem-open .bem-backdrop {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.bem-open .bem-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.bem-closed .bem-backdrop {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.bem-closed .bem-content {
+    transform: scale(0.95);
+    opacity: 0;
+}

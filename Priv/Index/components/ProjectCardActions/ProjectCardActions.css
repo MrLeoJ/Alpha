@@ -1,0 +1,79 @@
+
+.action-toolbar {
+    position: absolute;
+    top: 0.75rem; /* top-3 */
+    right: 0.75rem; /* right-3 */
+    display: flex;
+    align-items: center;
+    
+    /* Interconnected bar style */
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 6px; /* Compact rounded corners */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 20;
+    overflow: hidden; /* Clips children for interconnected look */
+}
+
+/* Show on hover of the project card group */
+.group:hover .action-toolbar {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.action-btn {
+    width: 28px; /* Smaller width */
+    height: 26px; /* Compact height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    color: #6b7280; /* gray-500 */
+    background: transparent;
+    border: none;
+    border-right: 1px solid rgba(0,0,0,0.06); /* Divider line */
+    
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    padding: 0;
+}
+
+/* Remove border from last button */
+.action-btn:last-child {
+    border-right: none;
+}
+
+/* Target Lucide SVGs to enforce smaller size */
+.action-btn svg, 
+.action-btn i {
+    width: 14px !important;
+    height: 14px !important;
+    transition: stroke 0.2s ease;
+}
+
+.action-btn:hover {
+    background-color: #f3f4f6; /* gray-100 */
+    color: #111827;
+}
+
+/* Specific hover colors */
+.action-btn.edit-btn:hover {
+    color: #00d2c3; /* Primary */
+    background-color: #f0fdfc;
+}
+
+.action-btn.clone-btn:hover {
+    color: #3b82f6; /* Blue */
+    background-color: #eff6ff;
+}
+
+.action-btn.delete-btn:hover {
+    color: #ef4444; /* Red */
+    background-color: #fef2f2;
+}

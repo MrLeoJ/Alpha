@@ -1,0 +1,33 @@
+/* Drag and Drop Visual Feedback */
+
+/* The item currently being dragged (following cursor) */
+.sortable-drag {
+    opacity: 1 !important;
+    background: #ffffff;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transform: scale(1.05);
+    cursor: grabbing;
+    z-index: 9999;
+    border-radius: 0.75rem; /* Match rounded-xl */
+}
+
+/* The placeholder in the list where the item will drop */
+.sortable-ghost {
+    opacity: 0.4;
+    background: #e5e7eb; /* gray-200 */
+    border: 2px dashed #cbd5e1; /* slate-300 */
+    box-shadow: none;
+    transform: scale(0.98);
+    border-radius: 0.75rem;
+}
+
+/* Ensure the grid container allows drops even if empty */
+#cards-grid-container {
+    min-height: 150px;
+}
+
+/* Disable transitions during drag to prevent jitter */
+.sortable-drag .project-card,
+.sortable-ghost .project-card {
+    transition: none !important;
+}

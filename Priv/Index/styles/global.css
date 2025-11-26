@@ -1,0 +1,26 @@
+/* Global Styles */
+body {
+    background-color: #f6f6f6;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #dddddd;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #bdbdbd;
+}
+
+/* Base Glass Utility */
+.glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}

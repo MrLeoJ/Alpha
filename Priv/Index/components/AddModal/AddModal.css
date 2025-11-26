@@ -1,0 +1,27 @@
+.modal-backdrop {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transition: opacity 0.3s ease;
+}
+
+.modal-content {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-open .modal-backdrop {
+    opacity: 1;
+}
+
+.modal-open .modal-content {
+    transform: scale(1);
+}
+
+.modal-closed .modal-backdrop {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-closed .modal-content {
+    transform: scale(0.95);
+}

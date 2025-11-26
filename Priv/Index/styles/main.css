@@ -1,0 +1,60 @@
+/* --- GLOBAL IMPORTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* --- CSS VARIABLES (SSOT) --- */
+:root {
+    --color-primary: #00d2c3;
+    --color-secondary: #dddddd;
+    --color-bg: #f6f6f6;
+    --color-text: #1f2937;
+    --font-family: 'Poppins', sans-serif;
+    
+    --shadow-island: 0 20px 40px -5px rgba(0, 0, 0, 0.1), 0 10px 20px -5px rgba(0, 0, 0, 0.04);
+    --shadow-glow: 0 0 15px rgba(0, 210, 195, 0.3);
+}
+
+/* --- BASE RESETS & UTILS --- */
+body {
+    background-color: var(--color-bg);
+    font-family: var(--font-family);
+    color: var(--color-text);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+}
+
+/* Utility Animations */
+.animate-fade-in {
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Glassmorphism Helper */
+.glass {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}

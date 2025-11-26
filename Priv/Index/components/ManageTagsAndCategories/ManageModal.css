@@ -1,0 +1,77 @@
+/* Manage Modal Overlay & Transitions */
+#manage-modal-overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transition: opacity 0.3s ease;
+}
+
+#manage-modal-overlay.hidden {
+    display: none;
+}
+
+#manage-modal-overlay.modal-closed {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#manage-modal-overlay.modal-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#manage-modal-content {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#manage-modal-overlay.modal-closed #manage-modal-content {
+    transform: scale(0.95);
+}
+
+#manage-modal-overlay.modal-open #manage-modal-content {
+    transform: scale(1);
+}
+
+/* List Items */
+.manage-list-item {
+    transition: background-color 0.2s ease;
+}
+
+.manage-list-item:hover {
+    background-color: #f9fafb; /* gray-50 */
+}
+
+/* Custom scrollbar for the list area */
+.manage-list-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+.manage-list-scroll::-webkit-scrollbar-thumb {
+    background: #e5e7eb;
+    border-radius: 3px;
+}
+
+/* Tabs */
+.tab-btn {
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.tab-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #00d2c3;
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+}
+
+.tab-btn.active {
+    color: #00d2c3;
+}
+
+.tab-btn.active::after {
+    transform: scaleX(1);
+}
