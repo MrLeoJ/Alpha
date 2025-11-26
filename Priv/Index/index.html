@@ -1,1 +1,81 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index.</title>
+    
+    <!-- Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Toastify CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    
+    <!-- Tailwind CSS & Config -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00d2c3',
+                        secondary: '#dddddd',
+                        background: '#f6f6f6',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- SortableJS -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+
+    <!-- Global & Component Styles -->
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="components/CommandIsland/CommandIsland.css">
+    <link rel="stylesheet" href="components/ProjectGrid/ProjectGrid.css">
+    <link rel="stylesheet" href="components/AddModal/AddModal.css">
+    <link rel="stylesheet" href="components/DND/DND.css">
+    <link rel="stylesheet" href="components/ProjectCardActions/ProjectCardActions.css">
+    <link rel="stylesheet" href="components/TaxonomyManager/TaxonomyManager.css">
+    <link rel="stylesheet" href="components/BulkEditing/BulkActionBar.css">
+    <link rel="stylesheet" href="components/BulkEditing/BulkEditModal.css">
+    <link rel="stylesheet" href="components/BackToTop/BackToTop.css">
+    <link rel="stylesheet" href="components/AutoFill/AutoFill.css">
+<link rel="stylesheet" href="/index.css">
+<script type="importmap">
+{
+  "imports": {
+    "vite": "https://aistudiocdn.com/vite@^7.2.4",
+    "url": "https://aistudiocdn.com/url@^0.11.4",
+    "path": "https://aistudiocdn.com/path@^0.12.7"
+  }
+}
+</script>
+</head>
+<body class="text-gray-800 antialiased min-h-screen relative pb-20 bg-[#f6f6f6]">
+
+    <!-- Component Mount Points -->
+    <div id="island-root"></div>
+    <main id="grid-root" class="container mx-auto px-4 pt-32"></main>
+    <div id="modal-root"></div>
+    <div id="taxonomy-root"></div>
+    <div id="bulk-bar-root"></div>
+    <div id="bulk-modal-root"></div>
+    <div id="back-to-top-root"></div>
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script type="module" src="app.js"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
