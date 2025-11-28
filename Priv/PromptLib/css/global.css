@@ -1,0 +1,276 @@
+
+:root {
+    /* Base Colors */
+    --primary: #fe6a5f;
+    --secondary: #475a54; /* Used for text in Light Mode */
+    
+    /* Semantic Colors - Light Mode Defaults */
+    --bg-color: #f5f5f5;
+    --bg-surface: #ffffff;      /* Cards, Modals */
+    --bg-element: #f8f9fa;      /* Inputs, Sidebars, Chips */
+    --bg-element-hover: #f0f2f5;
+    
+    --text-main: #475a54;
+    --text-light: #889995;
+    --text-inverse: #ffffff;
+    
+    --border-color: #eef0f2;
+    --border-color-hover: #d0d7de;
+    
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08);
+    --radius: 12px;
+}
+
+/* Dark Mode Overrides */
+[data-theme="dark"] {
+    --bg-color: #0f172a;        /* Slate 950 */
+    --bg-surface: #1e293b;      /* Slate 800 */
+    --bg-element: #334155;      /* Slate 700 */
+    --bg-element-hover: #475569; /* Slate 600 */
+    
+    --text-main: #f1f5f9;       /* Slate 100 */
+    --text-light: #94a3b8;      /* Slate 400 */
+    --secondary: #cbd5e1;       /* Re-map secondary to lighter grey for dark mode icons/text */
+    
+    --border-color: #334155;
+    --border-color-hover: #475569;
+    
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.4);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Layout Utilities */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.app-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg-surface); /* Was hardcoded rgba */
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: var(--radius);
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    font-family: inherit;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--text-inverse);
+    box-shadow: 0 4px 10px rgba(254, 106, 95, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(254, 106, 95, 0.4);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid var(--secondary);
+    color: var(--secondary);
+}
+
+.btn-icon {
+    padding: 8px;
+    border-radius: 50%;
+}
+
+/* Toast Container */
+#toast-container {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 10000;
+    align-items: center;
+    max-width: 90%;
+}
+
+@media (max-width: 768px) {
+    #toast-container {
+        bottom: 20px;
+    }
+}
+
+.toast {
+    background: var(--secondary);
+    color: var(--bg-color); /* Adaptive text color on toast */
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: slideIn 0.3s ease forwards;
+    font-size: 0.9rem;
+}
+
+/* In dark mode, ensure toast text is readable against the light grey secondary */
+[data-theme="dark"] .toast {
+    color: #0f172a; 
+    font-weight: 500;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Interactive Toast Styles (Confirmations) */
+.toast-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-grow: 1;
+}
+
+.toast-actions {
+    display: flex;
+    gap: 8px;
+    margin-left: 12px;
+    padding-left: 12px;
+    border-left: 1px solid rgba(255,255,255,0.2);
+}
+
+.toast-btn {
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: inherit;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Poppins', sans-serif;
+}
+
+.toast-btn:hover {
+    background: rgba(255,255,255,0.25);
+}
+
+.toast-btn.confirm {
+    background: var(--bg-surface);
+    color: var(--secondary); /* Invert logic */
+    font-weight: 600;
+}
+
+[data-theme="dark"] .toast-btn.confirm {
+    background: #0f172a;
+    color: #f1f5f9;
+}
+
+.toast-btn.confirm:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Input Toast Styles */
+.toast.toast-input {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+    gap: 12px;
+    min-width: 320px;
+}
+
+.toast-content-col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.toast-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.toast-input-field {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.2);
+    font-family: inherit;
+    font-size: 0.95rem;
+    outline: none;
+    background: rgba(255, 255, 255, 0.15); 
+    color: inherit;
+    transition: all 0.2s;
+}
+
+.toast-input-field:focus {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.1);
+}
+
+[data-theme="dark"] .toast-input-field {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+[data-theme="dark"] .toast-input-field:focus {
+    background: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+}
+
+.toast.toast-input .toast-actions {
+    margin-left: 0;
+    padding-left: 0;
+    border-left: none;
+    justify-content: flex-end;
+    margin-top: 4px;
+}
