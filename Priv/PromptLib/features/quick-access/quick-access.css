@@ -1,0 +1,106 @@
+
+/* Quick Access Section Headers */
+.quick-access-header,
+.main-library-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 24px 0 16px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--secondary);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.quick-access-header i,
+.main-library-header i {
+    color: var(--primary);
+    opacity: 0.8;
+}
+
+/* Pin Button on Cards */
+.pin-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--text-light);
+    border-radius: 50%;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10;
+    opacity: 0; /* Hidden by default until hover or pinned */
+}
+
+/* Show pin button on hover or if pinned */
+.prompt-card:hover .pin-btn,
+.prompt-card .pin-btn.active {
+    opacity: 1;
+}
+
+.pin-btn:hover {
+    background: var(--bg-element);
+    color: var(--secondary);
+    transform: scale(1.1);
+}
+
+.pin-btn.active {
+    color: var(--primary);
+    opacity: 1;
+}
+
+/* Pin Animation */
+.pin-btn.active svg {
+    fill: var(--primary);
+}
+
+/* Adjust card header to prevent overlap */
+.prompt-card .card-header {
+    padding-right: 24px;
+}
+
+/* List View Pin Column */
+.col-pin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.list-pin-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--border-color-hover); /* Very subtle when inactive */
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.list-row-item:hover .list-pin-btn {
+    color: var(--text-light);
+}
+
+.list-pin-btn:hover {
+    color: var(--secondary) !important;
+    background: var(--bg-element);
+}
+
+.list-pin-btn.active {
+    color: var(--primary) !important;
+}
+
+.list-pin-btn.active svg {
+    fill: var(--primary);
+}

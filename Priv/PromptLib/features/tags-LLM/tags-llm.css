@@ -1,0 +1,103 @@
+
+
+/* Library Card Styles */
+.category-tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.category-tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px; /* Matched to general tags */
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.category-tag:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Editor Selection Styles */
+.category-selection-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.category-check-btn {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    user-select: none;
+}
+
+.category-check-btn:hover {
+    background: var(--bg-element);
+    border-color: var(--border-color-hover);
+}
+
+.category-check-btn.selected {
+    background-color: var(--selected-bg);
+    color: var(--selected-color);
+    border-color: var(--selected-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    font-weight: 500;
+}
+
+/* Filter Active State in Library */
+.library-filter-active-indicator {
+    background: var(--bg-element);
+    padding: 8px 16px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    color: var(--secondary);
+    border: 1px solid var(--border-color);
+    animation: fadeIn 0.3s ease;
+}
+
+.clear-filter-btn {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.1);
+    color: var(--bg-surface);
+}
+
+[data-theme="dark"] .clear-filter-btn {
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+}
+
+.clear-filter-btn:hover {
+    background: var(--primary);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}

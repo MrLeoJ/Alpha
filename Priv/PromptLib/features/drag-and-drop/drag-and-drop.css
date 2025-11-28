@@ -1,0 +1,45 @@
+/* Drag and Drop Styling */
+
+/* The state of the item being dragged (the original element in the list) */
+.sortable-ghost {
+    opacity: 0.4;
+    background-color: var(--bg-element-hover);
+    border: 2px dashed var(--text-light);
+    box-shadow: none;
+    transform: scale(0.98);
+}
+
+/* The state of the item that is following the mouse/finger */
+.sortable-drag {
+    cursor: grabbing;
+    opacity: 1;
+    background: var(--bg-surface);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transform: scale(1.02) rotate(2deg);
+    border: 1px solid rgba(254, 106, 95, 0.3);
+    z-index: 9999;
+}
+
+[data-theme="dark"] .sortable-drag {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+}
+
+/* Cursor indicators for draggable items */
+.prompt-card {
+    cursor: grab;
+    touch-action: manipulation; /* Improves touch handling */
+}
+
+.prompt-card:active {
+    cursor: grabbing;
+}
+
+/* Hide the text cursor on content during drag to prevent distraction */
+.prompt-card * {
+    user-select: none;
+}
+
+/* Ensure buttons remain clickable and don't trigger drag immediately if clicked */
+.card-footer button {
+    cursor: pointer;
+}

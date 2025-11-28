@@ -1,0 +1,65 @@
+
+/* Syntax Highlighting Base Overrides */
+pre code.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 1.5em;
+    background: #1e293b; /* Slate 800 - distinct dark background for code */
+    color: #f1f5f9;
+    border-radius: 12px;
+    font-family: 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.9em;
+    line-height: 1.6;
+}
+
+/* Ensure Pre has relative positioning for the copy button */
+pre {
+    position: relative;
+    margin: 1.5em 0;
+    border-radius: 12px;
+    /* Reset default pre styles if necessary */
+    background: transparent;
+    padding: 0;
+    border: none;
+}
+
+/* Code Block Copy Button */
+.code-block-copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.7);
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    z-index: 10;
+}
+
+pre:hover .code-block-copy-btn {
+    opacity: 1;
+}
+
+.code-block-copy-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.code-block-copy-btn.copied {
+    background: #10b981; /* Green */
+    border-color: #10b981;
+    color: white;
+}
+
+/* Adjustments for light mode if we want code blocks to remain dark (standard) */
+/* The hljs styles usually handle token colors. 
+   We enforce the dark container for contrast in both modes. */

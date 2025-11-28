@@ -1,0 +1,185 @@
+
+/* Import Wizard Styles */
+
+.import-modal {
+    background: var(--bg-surface);
+    width: 90%;
+    max-width: 500px;
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: translateY(10px);
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.import-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.drop-zone {
+    border: 2px dashed var(--border-color);
+    border-radius: 12px;
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--bg-element);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-light);
+}
+
+.drop-zone:hover, .drop-zone.drag-over {
+    border-color: var(--primary);
+    background: rgba(254, 106, 95, 0.05);
+    color: var(--primary);
+}
+
+.drop-zone-icon {
+    width: 48px;
+    height: 48px;
+    opacity: 0.5;
+    transition: all 0.2s;
+}
+
+.drop-zone:hover .drop-zone-icon {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.drop-text {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.drop-subtext {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.import-preview {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.preview-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(71, 90, 84, 0.1);
+    color: var(--secondary);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preview-info {
+    flex-grow: 1;
+}
+
+.preview-filename {
+    font-weight: 600;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+}
+
+.preview-count {
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+.import-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.option-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.option-card:hover {
+    background: var(--bg-element);
+}
+
+.option-card.selected {
+    border-color: var(--primary);
+    background: rgba(254, 106, 95, 0.05);
+}
+
+.option-radio {
+    margin-top: 4px;
+    accent-color: var(--primary);
+}
+
+.option-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.option-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    margin-bottom: 2px;
+}
+
+.option-desc {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    line-height: 1.4;
+}
+
+.import-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.progress-container {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.progress-bar-bg {
+    width: 100%;
+    height: 8px;
+    background: var(--bg-element);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 12px;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: var(--primary);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.progress-status {
+    font-size: 0.9rem;
+    color: var(--text-main);
+    font-weight: 500;
+}

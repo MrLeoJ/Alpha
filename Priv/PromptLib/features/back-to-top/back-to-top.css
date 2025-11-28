@@ -1,0 +1,46 @@
+.back-to-top-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    color: #ffffff; /* Always white text on primary */
+    border: none;
+    box-shadow: 0 4px 12px rgba(254, 106, 95, 0.4);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 900; /* Below modals (2000+), below toast (1000) */
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.back-to-top-btn.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.back-to-top-btn:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 8px 20px rgba(254, 106, 95, 0.6);
+}
+
+/* Ensure visibility on dark mode doesn't clash */
+[data-theme="dark"] .back-to-top-btn {
+    box-shadow: 0 4px 12px rgba(254, 106, 95, 0.6);
+}
+
+@media (max-width: 768px) {
+    .back-to-top-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 44px;
+        height: 44px;
+    }
+}

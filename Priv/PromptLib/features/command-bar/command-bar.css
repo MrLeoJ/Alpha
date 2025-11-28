@@ -1,0 +1,172 @@
+
+/* Command Bar (Island Style) */
+.command-wrapper {
+    position: fixed;
+    top: 20px;
+    left: 0;
+    right: 0;
+    z-index: 90;
+    padding: 0 20px;
+    pointer-events: none; /* Let clicks pass through outside the bar */
+    display: flex;
+    justify-content: center;
+    flex-direction: column; /* Allow stacking of bar and panel */
+    align-items: center;
+}
+
+.command-bar {
+    pointer-events: auto;
+    background: var(--bg-surface);
+    padding: 8px; /* Adjusted padding */
+    border-radius: 50px;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    width: max-content; /* Shrink to fit content */
+    max-width: 90vw;    /* Prevent overflow */
+    gap: 4px;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s ease;
+    border: 1px solid var(--border-color);
+    position: relative; /* Context for panel */
+}
+
+.command-bar:focus-within {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+    border-color: var(--primary);
+}
+
+/* Dark mode focus state adjustment */
+[data-theme="dark"] .command-bar:focus-within {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* Collapsible Search Input */
+.cb-search-input {
+    width: 0;
+    flex-grow: 0;
+    padding: 0;
+    border: none;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-main);
+    background: transparent;
+    outline: none;
+    height: 40px;
+    opacity: 0;
+    pointer-events: none;
+    transition: width 0.3s ease, opacity 0.2s ease, padding 0.2s ease;
+}
+
+.command-bar.search-expanded .cb-search-input {
+    width: 240px; /* Explicit width for expansion */
+    opacity: 1;
+    pointer-events: auto;
+    padding: 0 8px;
+}
+
+.cb-search-input::placeholder {
+    color: var(--text-light);
+    opacity: 0.7;
+}
+
+/* Search Trigger Button (Replaces static icon) */
+.cb-search-trigger {
+    /* Inherits .cb-btn styles but ensures color consistency */
+    flex-shrink: 0;
+}
+
+/* Separator */
+.cb-divider {
+    width: 1px;
+    height: 24px;
+    background-color: var(--border-color);
+    margin: 0 4px;
+}
+
+/* Buttons */
+.cb-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    transition: all 0.2s;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.cb-btn:hover {
+    background-color: var(--bg-element);
+    color: var(--secondary);
+}
+
+.cb-btn.active {
+    background-color: rgba(254, 106, 95, 0.1);
+    color: var(--primary);
+}
+
+/* Badge for active filters */
+.filter-badge {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: var(--primary);
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 700;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--bg-surface);
+    transform: scale(0);
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.filter-badge.visible {
+    transform: scale(1);
+}
+
+.cb-add-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(254, 106, 95, 0.3);
+    margin-left: 4px;
+}
+
+.cb-add-btn:hover {
+    transform: scale(1.08);
+    background-color: #ff5245;
+    box-shadow: 0 6px 15px rgba(254, 106, 95, 0.5);
+}
+
+@media (max-width: 600px) {
+    .command-wrapper {
+        top: 10px;
+        padding: 0 10px;
+    }
+    .command-bar {
+        padding-left: 8px;
+    }
+    .command-bar.search-expanded .cb-search-input {
+        width: 140px;
+    }
+}

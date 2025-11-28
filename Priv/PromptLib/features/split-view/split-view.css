@@ -1,0 +1,261 @@
+
+/* Split View Container */
+.split-view-container {
+    display: flex;
+    /* Calculate height to fit screen: 100vh - header(~70px) - container padding(~100px) */
+    /* We use a flex grow approach on the main container usually, but specific height helps scroll */
+    height: calc(100vh - 180px); 
+    gap: 24px;
+    margin-top: 10px;
+}
+
+/* LEFT PANE (Master List) */
+.split-master-pane {
+    width: 350px;
+    min-width: 300px;
+    background: var(--bg-surface);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: var(--shadow-sm);
+}
+
+.split-master-header {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-light);
+    background: var(--bg-element);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.split-master-scroll {
+    overflow-y: auto;
+    flex-grow: 1;
+    padding: 8px;
+}
+
+/* Master List Item */
+.split-item {
+    padding: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 4px;
+}
+
+.split-item:hover {
+    background: var(--bg-element);
+}
+
+.split-item.active {
+    background: rgba(254, 106, 95, 0.08); /* Primary color low opacity */
+    border-color: rgba(254, 106, 95, 0.3);
+}
+
+.split-item-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.split-item-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--secondary);
+    line-height: 1.3;
+    /* Truncate to 2 lines */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.split-item.active .split-item-title {
+    color: var(--primary);
+}
+
+.split-item-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+    font-size: 0.75rem;
+    color: var(--text-light);
+}
+
+.split-coll-badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 6px;
+    background: var(--bg-element);
+    border-radius: 4px;
+}
+
+/* RIGHT PANE (Detail View) */
+.split-detail-pane {
+    flex-grow: 1;
+    background: var(--bg-surface);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    /* Initial empty state centering */
+    align-items: stretch; 
+}
+
+.split-detail-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--text-light);
+    gap: 16px;
+}
+
+/* Detail Content Layout */
+.split-detail-header {
+    padding: 20px 32px;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-surface);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-shrink: 0;
+}
+
+.split-header-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.split-detail-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--secondary);
+    line-height: 1.2;
+}
+
+.split-detail-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.split-detail-actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+/* Action Buttons in Detail */
+.sd-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    background: var(--bg-surface);
+    color: var(--text-main);
+    transition: all 0.2s;
+}
+
+.sd-btn:hover {
+    background: var(--bg-element);
+    border-color: var(--border-color-hover);
+}
+
+.sd-btn.primary {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    box-shadow: 0 4px 12px rgba(254, 106, 95, 0.2);
+}
+
+.sd-btn.primary:hover {
+    box-shadow: 0 6px 16px rgba(254, 106, 95, 0.3);
+    transform: translateY(-1px);
+}
+
+/* Scrollable Content Area */
+.split-detail-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 32px;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-main);
+}
+
+/* Markdown Styling within Detail */
+.split-markdown h1 { font-size: 1.8em; margin: 0.67em 0; color: var(--secondary); font-weight: 700; }
+.split-markdown h2 { font-size: 1.4em; margin: 0.75em 0; color: var(--secondary); font-weight: 600; }
+.split-markdown p { margin-bottom: 1em; }
+.split-markdown ul, .split-markdown ol { margin-bottom: 1em; padding-left: 1.5em; }
+.split-markdown blockquote {
+    border-left: 4px solid var(--primary);
+    padding-left: 16px;
+    margin: 1.5em 0;
+    color: var(--text-light);
+    font-style: italic;
+    background: var(--bg-element);
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+}
+.split-markdown pre {
+    background: var(--bg-element);
+    padding: 16px;
+    border-radius: 8px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+    color: var(--text-main);
+    white-space: pre-wrap;
+    margin: 1.5em 0;
+    border: 1px solid var(--border-color);
+}
+.split-markdown b, .split-markdown strong { font-weight: 700; color: var(--secondary); }
+.split-markdown i, .split-markdown em { font-style: italic; }
+
+
+/* Responsive Behavior */
+@media (max-width: 850px) {
+    .split-view-container {
+        flex-direction: column;
+        height: auto;
+        min-height: 500px;
+    }
+    
+    /* On mobile/tablet vertical, hide the detail pane initially or show it as a modal (handled by JS fallback normally) */
+    /* For true split view responsiveness, usually you stack them or hide detail. 
+       Here we will simply hide the detail pane on very small screens and behave like a list 
+    */
+    .split-detail-pane {
+        display: none; /* Hide detail on small screens, JS will open QuickLook instead */
+    }
+    
+    .split-master-pane {
+        width: 100%;
+        height: auto;
+        min-height: 400px;
+    }
+}

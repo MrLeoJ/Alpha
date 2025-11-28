@@ -1,0 +1,99 @@
+
+/* Syntax Highlighting Styles */
+
+/* Base Styles applied by the highlighter */
+.sh-token {
+    display: inline;
+}
+
+/* Variables {{...}} */
+.sh-variable {
+    color: var(--primary);
+    background-color: rgba(254, 106, 95, 0.1);
+    border-radius: 4px;
+    padding: 0 2px;
+    font-weight: 600;
+}
+
+/* Comments // ... */
+.sh-comment {
+    color: var(--text-light);
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* Headings # ... */
+.sh-heading {
+    color: var(--secondary);
+    font-weight: 700;
+    line-height: 1.4;
+    display: inline-block;
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+.sh-heading-1 {
+    font-size: 1.5em;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 4px;
+}
+
+.sh-heading-2 {
+    font-size: 1.25em;
+}
+
+.sh-heading-3 {
+    font-size: 1.1em;
+}
+
+/* Bold **...** */
+.sh-bold {
+    color: var(--text-main);
+    font-weight: 700;
+}
+
+/* Italic *...* */
+.sh-italic {
+    font-style: italic;
+}
+
+/* Code `...` */
+.sh-code {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: var(--bg-element);
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: var(--secondary);
+    border: 1px solid var(--border-color);
+}
+
+/* Lists - or 1. */
+.sh-list {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* Blockquote > ... */
+.sh-quote {
+    color: var(--text-light);
+    border-left: 3px solid var(--border-color);
+    padding-left: 8px;
+    display: inline-block;
+    width: 100%;
+    font-style: italic;
+}
+
+/* Links [...](...) */
+.sh-link {
+    color: #3b82f6; /* Blue-500 */
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .sh-link {
+    color: #60a5fa; /* Blue-400 */
+}

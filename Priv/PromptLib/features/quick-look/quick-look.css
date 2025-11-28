@@ -1,0 +1,215 @@
+
+
+/* Quick Look Modal */
+
+.ql-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.4); /* Lighter backdrop than editor */
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 2500; /* Between normal modals and top-level overlays */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+}
+
+.ql-overlay.visible {
+    opacity: 1;
+}
+
+.ql-modal {
+    background: var(--bg-surface);
+    width: 90%;
+    max-width: 700px;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: scale(0.95);
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    max-height: 85vh;
+}
+
+.ql-overlay.visible .ql-modal {
+    transform: scale(1);
+}
+
+/* Header */
+.ql-header {
+    padding: 24px 32px;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.ql-title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ql-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--secondary);
+    line-height: 1.2;
+}
+
+.ql-meta {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.ql-badge {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 12px;
+    background: var(--bg-element);
+    color: var(--text-light);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ql-close-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.ql-close-btn:hover {
+    background: var(--bg-element);
+    color: var(--secondary);
+}
+
+/* Content */
+.ql-content-scroll {
+    overflow-y: auto;
+    padding: 32px;
+    flex-grow: 1;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-main);
+}
+
+/* Rich Text Styling (Matches Editor) */
+.ql-markdown-preview h1 { 
+    font-size: 1.8em; 
+    margin: 0.67em 0; 
+    color: var(--secondary); 
+    font-weight: 700; 
+}
+.ql-markdown-preview h2 { 
+    font-size: 1.4em; 
+    margin: 0.75em 0; 
+    color: var(--secondary); 
+    font-weight: 600; 
+}
+.ql-markdown-preview p { 
+    margin-bottom: 1em; 
+}
+.ql-markdown-preview ul, .ql-markdown-preview ol { 
+    margin-bottom: 1em; 
+    padding-left: 1.5em; 
+}
+.ql-markdown-preview li { 
+    margin-bottom: 0.5em; 
+}
+.ql-markdown-preview blockquote {
+    border-left: 4px solid var(--primary);
+    padding-left: 16px;
+    margin: 1.5em 0;
+    color: var(--text-light);
+    font-style: italic;
+    background: var(--bg-element);
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+}
+.ql-markdown-preview pre {
+    background: var(--bg-element);
+    padding: 16px;
+    border-radius: 8px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+    color: var(--text-main);
+    white-space: pre-wrap;
+    margin: 1.5em 0;
+    border: 1px solid var(--border-color);
+}
+.ql-markdown-preview b, .ql-markdown-preview strong {
+    font-weight: 700;
+    color: var(--secondary);
+}
+.ql-markdown-preview i, .ql-markdown-preview em {
+    font-style: italic;
+}
+
+/* Footer */
+.ql-footer {
+    padding: 16px 32px;
+    background: var(--bg-element);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ql-footer-left {
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+.ql-footer-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.ql-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.ql-btn-secondary {
+    background: var(--bg-surface);
+    border-color: var(--border-color);
+    color: var(--text-main);
+}
+
+.ql-btn-secondary:hover {
+    background: var(--bg-element-hover);
+    border-color: var(--border-color-hover);
+}
+
+.ql-btn-primary {
+    background: var(--primary);
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(254, 106, 95, 0.3);
+}
+
+.ql-btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(254, 106, 95, 0.4);
+}

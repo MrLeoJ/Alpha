@@ -1,0 +1,109 @@
+
+
+/* Launch / LLM Selection Modal */
+
+.launch-modal {
+    background: var(--bg-surface);
+    width: 90%;
+    max-width: 480px;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: translateY(10px) scale(0.95);
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.injector-overlay.visible .launch-modal {
+    transform: translateY(0) scale(1);
+}
+
+.launch-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-element);
+}
+
+.launch-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.launch-body {
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    background: var(--bg-surface);
+}
+
+.llm-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 16px;
+    gap: 4px;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    background: var(--bg-surface);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    /* Anchor Tag Reset */
+    text-decoration: none;
+    color: inherit;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.llm-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 10px 20px -5px rgba(254, 106, 95, 0.15);
+    transform: translateY(-2px);
+    color: inherit;
+}
+
+.llm-card:active {
+    transform: scale(0.98);
+}
+
+.llm-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    margin-bottom: 4px;
+}
+
+.llm-desc {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    line-height: 1.3;
+}
+
+.launch-footer {
+    padding: 12px 24px;
+    background: var(--bg-element);
+    border-top: 1px solid var(--border-color);
+    font-size: 0.8rem;
+    color: var(--text-light);
+    text-align: center;
+}
+
+@media (max-width: 450px) {
+    .launch-body {
+        grid-template-columns: 1fr;
+    }
+    .llm-card {
+        padding: 16px;
+    }
+}

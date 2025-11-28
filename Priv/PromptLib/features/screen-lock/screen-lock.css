@@ -1,0 +1,288 @@
+
+
+/* Lock Screen Overlay - Full Screen Glass */
+.lock-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.65); /* Darker tint for better contrast */
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    z-index: 11000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lock-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Background Gradient Orb for visual flair - Breathing Animation */
+.lock-overlay::before {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(254, 106, 95, 0.35) 0%, rgba(254, 106, 95, 0.05) 50%, rgba(0,0,0,0) 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    pointer-events: none;
+    animation: lockBreathe 8s ease-in-out infinite;
+}
+
+@keyframes lockBreathe {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+    50% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.5; }
+}
+
+/* Lock Card - Frosted Glass */
+.lock-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.6);
+    padding: 48px;
+    border-radius: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    transform: scale(0.95) translateY(10px);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+[data-theme="light"] .lock-card {
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.15);
+}
+
+.lock-overlay.visible .lock-card {
+    transform: scale(1) translateY(0);
+}
+
+/* Icon */
+.lock-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary) 0%, #ff8a80 100%);
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 15px 30px rgba(254, 106, 95, 0.4);
+    margin-bottom: 8px;
+    transform: rotate(-5deg);
+}
+
+.lock-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+}
+
+[data-theme="light"] .lock-title {
+    color: var(--secondary);
+}
+
+.lock-desc {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.5;
+    max-width: 280px;
+}
+
+[data-theme="light"] .lock-desc {
+    color: var(--text-light);
+}
+
+/* PIN Input Styling */
+.pin-input-wrapper {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin: 16px 0;
+}
+
+.pin-digit {
+    width: 56px;
+    height: 64px;
+    border-radius: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.25);
+    font-size: 1.75rem;
+    font-weight: 600;
+    text-align: center;
+    color: white;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    outline: none;
+    -moz-appearance: textfield;
+    caret-color: var(--primary);
+}
+
+[data-theme="light"] .pin-digit {
+    background: white;
+    border-color: var(--border-color);
+    color: var(--text-main);
+}
+
+.pin-digit:focus {
+    border-color: var(--primary);
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 0 4px rgba(254, 106, 95, 0.25);
+    transform: translateY(-4px);
+}
+
+[data-theme="light"] .pin-digit:focus {
+    background: white;
+}
+
+.pin-digit.filled {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.pin-digit.error {
+    border-color: #ef4444; /* Red */
+    animation: shake 0.4s ease-in-out;
+    color: #ef4444;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-6px); }
+    40% { transform: translateX(6px); }
+    60% { transform: translateX(-6px); }
+    80% { transform: translateX(6px); }
+}
+
+/* Footer Actions */
+.lock-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.forgot-pin-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: color 0.2s;
+    font-weight: 500;
+}
+
+[data-theme="light"] .forgot-pin-btn {
+    color: var(--text-light);
+}
+
+.forgot-pin-btn:hover {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: underline;
+}
+
+[data-theme="light"] .forgot-pin-btn:hover {
+    color: var(--secondary);
+}
+
+/* Setup Mode Toggles */
+.setup-option {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 12px 16px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+}
+
+[data-theme="light"] .setup-option {
+    background: white;
+    border-color: var(--border-color);
+    color: var(--text-main);
+}
+
+.setup-option:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.setup-option input {
+    accent-color: var(--primary);
+    width: 18px;
+    height: 18px;
+}
+
+/* Buttons in setup */
+.lock-btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.lock-btn.primary {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 10px 20px rgba(254, 106, 95, 0.25);
+}
+
+.lock-btn.primary:hover:not(:disabled) {
+    background: #ff5245;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(254, 106, 95, 0.35);
+}
+
+.lock-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: rgba(128, 128, 128, 0.2);
+    color: rgba(255, 255, 255, 0.3);
+    box-shadow: none;
+}
+
+.lock-btn.secondary {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+[data-theme="light"] .lock-btn.secondary {
+    color: var(--text-light);
+}
+
+.lock-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+[data-theme="light"] .lock-btn.secondary:hover {
+    background: var(--bg-element);
+    color: var(--text-main);
+}
